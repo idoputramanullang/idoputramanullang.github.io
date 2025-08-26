@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  min-height: 100vh;
+  min-height: 100dvh; /* untuk browser modern */
+  height: -webkit-fill-available;
+
+  overflow-x: hidden; /* hilangkan scroll kanan/kiri */
+  overflow-y: auto;   /* tetap bisa scroll atas/bawah */
+}
+
+.animate-blink {
+  animation: blink 0.7s infinite step-start;
+} 
+
+.title-section {
+  @apply text-center mt-5;
+}
+
+.primary-title {
+  @apply text-4xl tracking-wide font-extrabold mb-[-1.7rem]
+         bg-gradient-to-b from-gray-700 via-black/40 to-transparent
+         bg-clip-text text-transparent ;
+}
+
+.secondary-title {
+  @apply text-3xl font-extrabold text-primary;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.icon {
+  @apply flex items-center justify-center p-2 border-t-2 border-b-2 rounded-lg border-primary hover:bg-primary hover:text-white;
+}
+.box {
+  @apply flex flex-col items-center p-4 rounded-lg shadow-md dark:shadow-white/5;
+}
+.secondarytext {
+  @apply text-gray-600 dark:text-slate-300;
+}
+
+/* portfolio  */
+.card:hover .card-image {
+  filter: blur(5px);
+}
+.card:hover .icon-overlay {
+  opacity: 1;
+}
