@@ -10,7 +10,7 @@ import Contact from "@/components/layouts/Contact";
 export default function Home() {
   return (
     <main className="bg-black ">
-      <div className="max-w-md mx-auto text-white flex flex-col items-center border ">
+      <div className="max-w-md mx-auto text-white flex flex-col items-center   ">
         <Navbar />
         <Hero />
         <About />
