@@ -1,25 +1,24 @@
 import {
   FaWhatsapp,
   FaInstagram,
-  FaDiscord,
   FaLinkedin,
   FaGithub,
   FaTelegramPlane,
   FaTwitter,
-  FaFacebookF,
+  FaTiktok,
 } from "react-icons/fa";
 
+import { FaThreads } from "react-icons/fa6";
 const contacts = [
-  { info: "Kirim Pesan", icon: <FaWhatsapp size={40} color="#25D366" />, link: "https://wa.me/6281272821234" },
-  { info: "Follow Instagram", icon: <FaInstagram size={40} color="#E1306C" />, link: "https://instagram.com/idomanullang" },
-  { info: "Tambahkan di Discord", icon: <FaDiscord size={40} color="#5865F2" />, link: "https://discord.com/users/yourDiscordID" },
-  { info: "Koneksi LinkedIn", icon: <FaLinkedin size={40} color="#0077B5" />, link: "https://linkedin.com/in/idomanullang" },
-  { info: "Cek GitHub", icon: <FaGithub size={40} color="#ffffff" />, link: "https://github.com/idomanullang" },
-  { info: "Chat Telegram", icon: <FaTelegramPlane size={40} color="#0088cc" />, link: "https://t.me/idomanullang" },
-  { info: "Follow Twitter", icon: <FaTwitter size={40} color="#1DA1F2" />, link: "https://twitter.com/idomanullang" },
-  { info: "Like Facebook", icon: <FaFacebookF size={40} color="#1877F2" />, link: "https://facebook.com/idomanullang" },
+  { info: "WhatsApp", icon: <FaWhatsapp size={40} color="#ffffff" />, link: "https://wa.me/6281265550852" },
+  { info: "Instagram", icon: <FaInstagram size={40} color="#ffffff" />, link: "https://www.instagram.com/idomanullang?igsh=c3VhaGtramphcnFv" },
+  { info: "TikTok", icon: <FaTiktok size={40} color="#ffffff" />, link: "https://www.tiktok.com/@idomanullang?_r=1&_t=ZS-94LQWZUpGC4" },
+  { info: "GitHub", icon: <FaGithub size={40} color="#ffffff" />, link: "https://github.com/idoputramanullang" },
+  { info: "LinkedIn", icon: <FaLinkedin size={40} color="#ffffff" />, link: "https://www.linkedin.com/in/ido-putra-amanta-manullang" },
+  { info: "Threads", icon: <FaThreads size={40} color="#ffffff" />, link: "" },
+  { info: "Telegram", icon: <FaTelegramPlane size={40} color="#ffffff" />, link: "" },
+  { info: "Twitter", icon: <FaTwitter size={40} color="#ffffff" />, link: "" },
 ];
-
 export default function Contact() {
   return (
     <section className="py-16   px-4 ">
@@ -38,20 +37,32 @@ export default function Contact() {
       </div>
       <div className="font-paragraf   mt-6  tracking-wider text-md  text-white fade-up delay-1 text-justify  indent-8">
         Hubungi saya untuk mendiskusikan proyek pengembangan web, kolaborasi teknologi, konsultasi IT, atau untuk mendapatkan informasi terkait layanan rehabilitasi narkoba, manajemen data pasien, dan dukungan digital bagi yayasan serta lembaga sosial.
-      </div> 
+      </div>
       <div className="grid grid-cols-4 gap-4  my-12">
-        {contacts.map((c) => (
-          <a
-            key={c.info}
-            href={c.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center gap-2 p-2 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
-          >
-            <div className="transition-transform duration-300 hover:scale-110">{c.icon}</div>
-            <span className="text-gray-400 text-[10px] md:text-sm text-center  font-paragraf">{c.info}</span>
-          </a>
-        ))}
+        {contacts.map((c) => {
+          const isDisabled = !c.link;
+
+          return (
+            <a
+              key={c.info}
+              href={isDisabled ? undefined : c.link}
+              target={isDisabled ? undefined : "_blank"}
+              rel={isDisabled ? undefined : "noopener noreferrer"}
+              className={`flex flex-col items-center justify-center gap-2 p-2 rounded-xl backdrop-blur-xl border border-white/10 transition-all duration-300
+        ${isDisabled
+                  ? "pointer-events-none"
+                  : "hover:-translate-y-1 hover:shadow-lg"
+                }`}
+            >
+              <div className="transition-transform duration-300 hover:scale-110">
+                {c.icon}
+              </div>
+              <span className="text-gray-400 text-[10px] md:text-sm text-center font-paragraf">
+                {c.info}
+              </span>
+            </a>
+          );
+        })}
       </div>
 
       {/* CONTACT FORM */}
